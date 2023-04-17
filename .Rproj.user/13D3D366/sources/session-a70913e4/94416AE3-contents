@@ -1,0 +1,107 @@
+---
+title: "R_biolmol_A01254805"
+author: "Daniel Barreras, Yair Beltrán, Victor Symonds"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+``` {r include=FALSE}
+library(stringr)
+library(stringi)
+```
+
+
+## PARTE 1
+
+>Crea una función que genere una secuencia aleatoria de nucleótidos de ADN (A, T,
+G y C) de tamaño “n”.
+Ejecútala solicitando una secuencia aleatoria de ADN de 30 nucleótidos y muestra
+el resultado impreso en consola.
+
+``` {r}
+crearSecuenciaADN <- function(n = 30) {
+  
+  nucleotidos <- c("A", "T", "G", "C")
+  secuencia <- sample(nucleotidos, n, replace=TRUE)
+  
+  return(paste(secuencia, collapse=""))
+}
+
+
+secuenciaAleatoria <- crearSecuenciaADN(30);
+print(secuenciaAleatoria)
+```
+
+
+>Crea una función que calcule el tamaño de una secuencia de ADN.
+Utilízala para calcular el tamaño de la secuencia que generaste en el punto 1 y
+muestra el resultado impreso en consola.
+
+```{r}
+calcularTamañoSecuencia <- function(secuencia) {
+  return(nchar(secuencia))
+}
+
+tamañoSecuencia <- calcularTamañoSecuencia(secuenciaAleatoria)
+
+cat("El tamaño de la secuencia de ADN es:", tamañoSecuencia)
+```
+
+
+>Crea una función que recibe una secuencia de DNA e imprime el porcentaje de
+cada base (A, C, G y T) en la secuencia. Ejecútala sobre la secuencia que generaste
+en el punto 1 y muestra el resultado impreso en consola.
+
+```{r}
+calcPorcentajeBases <- function(secuencia){
+  
+  n <- nchar(secuencia)
+  a <- sum(str_count(secuencia, "A")) 
+  c <- sum(str_count(secuencia, "C")) 
+  g <- sum(str_count(secuencia, "G"))
+  t <- sum(str_count(secuencia, "T"))
+
+  porA <- a/n * 100
+  porC <- c/n * 100
+  porG <- g/n * 100
+  porT <- t/n * 100
+  
+  cat("Porcentaje de bases A:", round(porA, digits = 2), "%\n")
+  cat("Porcentaje de bases C:", round(porC, digits = 2), "%\n")
+  cat("Porcentaje de bases G:", round(porG, digits = 2), "%\n")
+  cat("Porcentaje de bases T:", round(porT, digits = 2), "%\n")
+}
+
+calcPorcentajeBases(secuenciaAleatoria)
+```
+
+
+>Crea una función que recibe una hebra directa y regresa la hebra inversa.
+Ejecútala sobre la secuencia que generaste en el punto 1 y muestra el resultado
+impreso en consola.
+
+```{r}
+calcularHebraInversa <- function(secuencia){
+  
+  return(stri_reverse(secuencia))
+}
+
+hebraInversa <- calcularHebraInversa(secuenciaAleatoria)
+cat("Secuencia aleatoria: ", secuenciaAleatoria, "\n")
+cat("Hebra inversa: ", hebraInversa)
+```
+
+>Crea una función qué recibe una hebra directa y obtiene la hebra complementaria.
+Ejecútala sobre la secuencia que generaste en el punto 1 y muestra el resultado
+impreso en consola
+
+```{r}
+calculaHebraComplementaria <- function(secuencia){
+  return(chartr("ATCG", "TAGC", secuencia))
+}
+
+hebraComplementaria <- calculaHebraComplementaria(secuenciaAleatoria)
+
+cat("Secuencia aleatoria: ", secuenciaAleatoria, "\n")
+cat("Hebra complementaria:", hebraComplementaria)
+```
