@@ -1,10 +1,19 @@
-# PARTE 1
+---
+title: "R_biolmol_A01254805"
+author: "Daniel Barreras, Yair Beltrán, Victor Symonds"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
 
-"Crea una función que genere una secuencia aleatoria de nucleótidos de ADN (A, T,
+
+## PARTE 1
+
+>Crea una función que genere una secuencia aleatoria de nucleótidos de ADN (A, T,
 G y C) de tamaño “n”.
 Ejecútala solicitando una secuencia aleatoria de ADN de 30 nucleótidos y muestra
-el resultado impreso en consola."
+el resultado impreso en consola.
 
+``` {r}
 crearSecuenciaADN <- function(n = 30) {
   
   nucleotidos <- c("A", "T", "G", "C")
@@ -16,11 +25,14 @@ crearSecuenciaADN <- function(n = 30) {
 
 secuenciaAleatoria <- crearSecuenciaADN(30);
 print(secuenciaAleatoria)
+```
 
-"Crea una función que calcule el tamaño de una secuencia de ADN.
+
+>Crea una función que calcule el tamaño de una secuencia de ADN.
 Utilízala para calcular el tamaño de la secuencia que generaste en el punto 1 y
-muestra el resultado impreso en consola."
+muestra el resultado impreso en consola.
 
+```{r}
 calcularTamañoSecuencia <- function(secuencia) {
   return(nchar(secuencia))
 }
@@ -28,31 +40,21 @@ calcularTamañoSecuencia <- function(secuencia) {
 tamañoSecuencia <- calcularTamañoSecuencia(secuenciaAleatoria)
 
 cat("El tamaño de la secuencia de ADN es:", tamañoSecuencia)
+```
 
-"Crea una función que recibe una secuencia de DNA e imprime el porcentaje de
+
+>Crea una función que recibe una secuencia de DNA e imprime el porcentaje de
 cada base (A, C, G y T) en la secuencia. Ejecútala sobre la secuencia que generaste
-en el punto 1 y muestra el resultado impreso en consola."
+en el punto 1 y muestra el resultado impreso en consola.
 
+```{r}
 calcPorcentajeBases <- function(secuencia){
   
   n <- nchar(secuencia)
-  a <- 0
-  c <- 0
-  g <- 0
-  t <- 0
-  
-  for (i in 1:n) {
-    base <- substr(secuencia, i, i)
-    if (base == "A") {
-      a <- a + 1
-    } else if (base == "C") {
-      c <- c + 1
-    } else if (base == "G") {
-      g <- g + 1
-    } else if (base == "T") {
-      t <- t + 1
-    }
-  }
+  a <- sum(str_count(secuencia, "A")) 
+  c <- sum(str_count(secuencia, "C")) 
+  g <- sum(str_count(secuencia, "G"))
+  t <- sum(str_count(secuencia, "T"))
 
   porA <- a/n * 100
   porC <- c/n * 100
@@ -66,11 +68,14 @@ calcPorcentajeBases <- function(secuencia){
 }
 
 calcPorcentajeBases(secuenciaAleatoria)
+```
 
-"Crea una función que recibe una hebra directa y regresa la hebra inversa.
+
+>Crea una función que recibe una hebra directa y regresa la hebra inversa.
 Ejecútala sobre la secuencia que generaste en el punto 1 y muestra el resultado
-impreso en consola"
+impreso en consola.
 
+```{r}
 calcularHebraInversa <- function(secuencia){
   inversa <- ""
   for (i in nchar(secuencia):1) {
@@ -82,11 +87,13 @@ calcularHebraInversa <- function(secuencia){
 hebraInversa <- calcularHebraInversa(secuenciaAleatoria)
 cat("Secuencia aleatoria: ", secuenciaAleatoria, "\n")
 cat("Hebra inversa: ", hebraInversa)
+```
 
-"Crea una función qué recibe una hebra directa y obtiene la hebra complementaria.
+>Crea una función qué recibe una hebra directa y obtiene la hebra complementaria.
 Ejecútala sobre la secuencia que generaste en el punto 1 y muestra el resultado
-impreso en consola"
+impreso en consola
 
+```{r}
 calculaHebraComplementaria <- function(secuencia){
   complementaria <- ""
   for (i in 1:nchar(secuencia)) {
@@ -108,53 +115,4 @@ hebraComplementaria <- calculaHebraComplementaria(secuenciaAleatoria)
 
 cat("Secuencia aleatoria: ", secuenciaAleatoria, "\n")
 cat("Hebra complementaria:", hebraComplementaria)
-
-
-"Crea una función que transcribe ADN a ARN. Es decir, que recibe una secuencia
-molde de nucleótidos de ADN y devuelve la secuencia del transcrito
-correspondiente que se transcribiría a partir de dicha secuencia.
-Ejecútala sobre la secuencia que generaste en el punto 1 y muestra el resultado
-impreso en consola."
-
-transcribirADNARN <- function(secuencia) {
-  arn <- ""
-  for(i in 1:nchar(secuencia)){
-    base <- substr(secuencia, i, i)
-    if(base == "T"){
-      arn <- paste0(arn, "U")
-    }else{
-      arn <- paste0(arn, base)
-    }
-  }
-  return(arn)
-}
-
-arnTranscrito <- transcribirADNARN(secuenciaAleatoria)
-cat("Secuencia aleatoria: ", secuenciaAleatoria, "\n")
-cat("Secuencia transcrita a ARN: ", arnTranscrito)
-
-"Crea una función que te sirva para encontrar codones de inicio y de terminación
-en una secuencia dada de ARN. A la secuencia presente entre un codón de
-inicio y uno de terminación en un gen se le conoce como marco de lectura.
-Ejecútala sobre la secuencia que generaste en el punto anterior (6) y muestra el
-resultado impreso en consola."
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
