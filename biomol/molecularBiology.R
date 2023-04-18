@@ -72,7 +72,7 @@ calcular_porcentaje_bases(secuencia_aleatoria)
 Ejecútala sobre la secuencia que generaste en el punto 1 y muestra el resultado
 impreso en consola"
 
-calcularhebra_inversa <- function(secuencia){
+calcular_hebra_inversa <- function(secuencia){
   inversa <- ""
   for (i in nchar(secuencia):1) {
     inversa <- paste0(inversa, substr(secuencia, i, i))
@@ -80,9 +80,12 @@ calcularhebra_inversa <- function(secuencia){
   return(inversa)
 }
 
-hebra_inversa <- calcularhebra_inversa(secuencia_aleatoria)
+hebra_inversa <- calcular_hebra_inversa(secuencia_aleatoria)
 cat("Secuencia aleatoria: ", secuencia_aleatoria, "\n")
 cat("Hebra inversa: ", hebra_inversa)
+
+
+# Parte 2
 
 "Crea una función qué recibe una hebra directa y obtiene la hebra complementaria.
 Ejecútala sobre la secuencia que generaste en el punto 1 y muestra el resultado
@@ -134,24 +137,42 @@ arn_transcrito <- transcribir_adn_arn(secuencia_aleatoria)
 cat("Secuencia aleatoria: ", secuencia_aleatoria, "\n")
 cat("Secuencia transcrita a ARN: ", arn_transcrito)
 
+"Crea una función que te sirva para encontrar codones de inicio y de terminación
+en una secuencia dada de ARN. A la secuencia presente entre un codón de
+inicio y uno de terminación en un gen se le conoce como marco de lectura.
+Ejecútala sobre la secuencia que generaste en el punto anterior (6) y muestra el
+resultado impreso en consola."
 
 
+encontrar_codones <- function(secuencia){
+  codon_inicio = "AUG"
+  codon_final = c("UAA", "UAG", "UGA")
+  
+  secuencia <- paste0(codon_inicio, secuencia, "UAAUAGUGA")
 
+  codones <- c();
+  
+  
+  for(i in  seq(1, nchar(secuencia), by=3)){
+    
+    j <- (i+2)/3;
+    
+    codones[j] <- paste0(substr(secuencia, i, i), substr(secuencia, i+1, i+1), substr(secuencia, i+2, i+2));
+  }
+  print(codones)
+  print(length(codones))
+  
+  for(i in 1:length(codones)){
+    if(codones[i] == codon_inicio){
+      print("START")
+    }else if(codones[i] %in% codon_final){
+      print("STOP")
+      break
+    } else {
+      print(codones[i])
+    }
+  }
+  
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+encontrar_codones(arn_transcrito)
