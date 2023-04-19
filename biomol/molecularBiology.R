@@ -85,8 +85,6 @@ cat("Secuencia aleatoria: ", secuencia_aleatoria, "\n")
 cat("Hebra inversa: ", hebra_inversa)
 
 
-# Parte 2
-
 "Crea una función qué recibe una hebra directa y obtiene la hebra complementaria.
 Ejecútala sobre la secuencia que generaste en el punto 1 y muestra el resultado
 impreso en consola"
@@ -111,8 +109,10 @@ calcular_hebra_complementaria <- function(secuencia){
 hebra_complementaria <- calcular_hebra_complementaria(secuencia_aleatoria)
 
 cat("Secuencia aleatoria: ", secuencia_aleatoria, "\n")
-cat("Hebra complementaria:", hebra_complementaria)
+cat("Hebra complementaria: ", hebra_complementaria)
 
+
+# Parte 2
 
 "Crea una función que transcribe ADN a ARN. Es decir, que recibe una secuencia
 molde de nucleótidos de ADN y devuelve la secuencia del transcrito
@@ -213,7 +213,3 @@ traducir_arn <- function(codones){
 }
 
 traducir_arn(codones)
-
-
-
-
