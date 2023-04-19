@@ -173,6 +173,47 @@ encontrar_codones <- function(secuencia){
     }
   }
   
+  return(codones)
 }
 
-encontrar_codones(arn_transcrito)
+codones <- encontrar_codones(arn_transcrito)
+
+"Crea una función que traduce una secuencia de ARN a una secuencia de
+aminoácidos (proteína), siguiendo para ello las reglas del código genético y la
+representación en una letra de los aminoácidos."
+
+traducir_arn <- function(codones){
+  tabla_aminoacidos <- data.frame(
+    codon = c("UUU", "UUC", "UUA", "UUG", "CUU", "CUC", "CUA", "CUG", "AUU", "AUC", "AUA", "AUG",
+              "GUU", "GUC", "GUA", "GUG", "UCU", "UCC", "UCA", "UCG", "CCU", "CCC", "CCA", "CCG",
+              "ACU", "ACC", "ACA", "ACG", "GCU", "GCC", "GCA", "GCG", "UAU", "UAC", "UAA", "UAG",
+              "CAU", "CAC", "CAA", "CAG", "AAU", "AAC", "AAA", "AAG", "GAU", "GAC", "GAA", "GAG",
+              "UGU", "UGC", "UGA", "UGG", "CGU", "CGC", "CGA", "CGG", "AGU", "AGC", "AGA", "AGG",
+              "GGU", "GGC", "GGA", "GGG"),
+    amino_acido = c("Phe", "Phe", "Leu", "Leu", "Leu", "Leu", "Leu", "Leu", "Ile", "Ile", "Ile", "Met",
+                   "Val", "Val", "Val", "Val", "Ser", "Ser", "Ser", "Ser", "Pro", "Pro", "Pro", "Pro",
+                   "Thr", "Thr", "Thr", "Thr", "Ala", "Ala", "Ala", "Ala", "Tyr", "Tyr", "Stop", "Stop",
+                   "His", "His", "Gln", "Gln", "Asn", "Asn", "Lys", "Lys", "Asp", "Asp", "Glu", "Glu",
+                   "Cys", "Cys", "Stop", "Trp", "Arg", "Arg", "Arg", "Arg", "Ser", "Ser", "Arg", "Arg",
+                   "Gly", "Gly", "Gly", "Gly")
+  )
+  
+  cat("START ")
+  for(i in seq_along(codones)){
+    
+    codon_encontrado <- codones[i] == tabla_aminoacidos$codon
+    posicion <- which(codon_encontrado == TRUE)
+    
+    if(tabla_aminoacidos$amino_acido[posicion] == "Stop"){
+      break
+    }
+    cat(tabla_aminoacidos$amino_acido[posicion], " ")
+  } 
+  cat("STOP")
+}
+
+traducir_arn(codones)
+
+
+
+
