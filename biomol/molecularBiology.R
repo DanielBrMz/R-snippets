@@ -190,12 +190,12 @@ traducir_arn <- function(codones){
               "CAU", "CAC", "CAA", "CAG", "AAU", "AAC", "AAA", "AAG", "GAU", "GAC", "GAA", "GAG",
               "UGU", "UGC", "UGA", "UGG", "CGU", "CGC", "CGA", "CGG", "AGU", "AGC", "AGA", "AGG",
               "GGU", "GGC", "GGA", "GGG"),
-    amino_acido = c("Phe", "Phe", "Leu", "Leu", "Leu", "Leu", "Leu", "Leu", "Ile", "Ile", "Ile", "Met",
-                   "Val", "Val", "Val", "Val", "Ser", "Ser", "Ser", "Ser", "Pro", "Pro", "Pro", "Pro",
-                   "Thr", "Thr", "Thr", "Thr", "Ala", "Ala", "Ala", "Ala", "Tyr", "Tyr", "Stop", "Stop",
-                   "His", "His", "Gln", "Gln", "Asn", "Asn", "Lys", "Lys", "Asp", "Asp", "Glu", "Glu",
-                   "Cys", "Cys", "Stop", "Trp", "Arg", "Arg", "Arg", "Arg", "Ser", "Ser", "Arg", "Arg",
-                   "Gly", "Gly", "Gly", "Gly")
+    amino_acido = c("F", "F", "L", "L", "L", "L", "L", "L", "I", "I", "I", "M",
+                    "V", "V", "V", "V", "S", "S", "S", "S", "P", "P", "P", "P",
+                    "T", "T", "T", "T", "A", "A", "A", "A", "Y", "Y", "STOP", "STOP",
+                    "H", "H", "Q", "Q", "N", "N", "K", "K", "D", "D", "E", "E",
+                    "C", "C", "STOP", "W", "R", "R", "R", "R", "S", "S", "R", "R",
+                    "G", "G", "G", "G")
   )
   
   cat("START ")
@@ -204,7 +204,7 @@ traducir_arn <- function(codones){
     codon_encontrado <- codones[i] == tabla_aminoacidos$codon
     posicion <- which(codon_encontrado == TRUE)
     
-    if(tabla_aminoacidos$amino_acido[posicion] == "Stop"){
+    if(tabla_aminoacidos$amino_acido[posicion] == "STOP"){
       break
     }
     cat(tabla_aminoacidos$amino_acido[posicion], " ")
@@ -213,3 +213,30 @@ traducir_arn <- function(codones){
 }
 
 traducir_arn(codones)
+
+gen_hmp <- "ATGCTTGACGCTCAAACCATCGCTACAGTAAAAGCCACCATCCCTTTACTGGTGGAAACGGGGCCAAAGT
+TAACCGCCCATTTCTACGACCGTATGTTTACTCATAACCCAGAACTCAAAGAAATTTTTAACATGAGTAA
+CCAGCGTAATGGCGATCAACGTGAAGCCCTGTTTAACGCTATTGCCGCCTACGCCAGTAATATTGAAAAC
+CTGCCTGCGCTGCTGCCAGCGGTAGAAAAAATCGCGCAGAAGCACACCAGCTTCCAGATCAAACCGGAAC
+AGTACAACATCGTCGGTGAACACCTGTTGGCAACGCTGGACGAAATGTTCAGCCCGGGGCAGGAAGTGCT
+GGACGCGTGGGGTAAAGCCTATGGTGTACTGGCTAATGTATTTATCAATCGCGAGGCGGAAATCTATAAC
+GAAAACGCCAGCAAAGCCGGTGGTTGGGAAGGTACTCGCGATTTCCGCATTGTGGCTAAAACACCGCGCA
+GCGCGCTTATCACCAGCTTCGAACTGGAGCCGGTCGACGGTGGCGCAGTGGCAGAATACCGTCCGGGGCA
+ATATCTCGGCGTCTGGCTGAAGCCGGAAGGTTTCCCACATCAGGAAATTCGTCAGTACTCTTTGACTCGC
+AAACCGGATGGCAAAGGCTATCGTATTGCGGTGAAACGCGAAGAGGGTGGGCAGGTATCCAACTGGTTGC
+ACAATCACGCCAATGTTGGCGATGTCGTGAAACTGGTCGCTCCGGCAGGTGATTTCTTTATGGCTGTCGC
+AGATGACACACCAGTGACGTTAATCTCTGCCGGTGTTGGTCAAACGCCAATGCTGGCAATGCTCGACACG
+CTGGCAAAAGCAGGCCACACAGCACAAGTGAACTGGTTCCATGCGGCAGAAAATGGCGATGTTCACGCCT
+TTGCCGATGAAGTTAAGGAACTGGGGCAGTCACTGCCGCGCTTTACCGCGCACACCTGGTATCGTCAGCC
+GAGCGAAGCCGATCGCGCTAAAGGTCAGTTTGATAGCGAAGGTCTGATGGATTTGAGCAAACTGGAAGGT
+GCGTTCAGCGATCCGACAATGCAGTTCTATCTCTGCGGCCCGGTTGGCTTCATGCAGTTTACCGCGAAAC
+AGTTAGTGGATCTGGGCGTGAAGCAGGAAAACATTCATTACGAATGCTTTGGCCCGCATAAGGTGCTGTA
+A"
+
+gen_hmp <- gsub(pattern = "\n", replacement = "", gen_hmp)
+
+gen_hmp <- transcribir_adn_arn(gen_hmp)
+
+gen_hmp <- encontrar_codones(gen_hmp)
+
+gen_hmp <- traducir_arn(gen_hmp)
