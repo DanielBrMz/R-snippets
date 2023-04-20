@@ -159,8 +159,6 @@ encontrar_codones <- function(secuencia){
     
     codones[j] <- paste0(substr(secuencia, i, i), substr(secuencia, i+1, i+1), substr(secuencia, i+2, i+2));
   }
-  print(codones)
-  print(length(codones))
   
   for(i in 1:length(codones)){
     if(codones[i] == codon_inicio){
