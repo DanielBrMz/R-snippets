@@ -123,4 +123,3 @@ arn_hmp <- transcribir_adn_arn(gene_hmp)
 codones_hmp <- encontrar_codones(arn_hmp)
 traducir_arn(codones_hmp)
 traducir_arn(codones_hmp)
-
