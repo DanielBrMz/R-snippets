@@ -2,7 +2,9 @@
 title: "Bases de Datos de Virus NCBI"
 author: "Daniel Barreras, Yair Beltrán, Victor Symonds"
 date: "`r Sys.Date()`"
-output: pdf_document
+output:
+  word_document: default
+  pdf_document: default
 ---
 
 ### Instalación de paquete 'seqinr' y definición de directorio
@@ -195,7 +197,7 @@ calcular_tamaño_genoma(sars_cov_2)
 ```{r}
 calcular_composicion_genoma <- function(genoma) {
   nucleotidos <- c("Adenina: ", "Citosina: ", "Guanina: ", "Timina: ")
-  composicion <- calcular_cantidad_bases(genoma[[1]], 1)
+  composicion <- calcular_cantidad_bases(genoma[[1]])
   
   for(i in seq_along(composicion)){
     cat("Contenido de ", nucleotidos[i], composicion[[i]], "\n")
