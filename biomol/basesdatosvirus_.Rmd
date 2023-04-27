@@ -1,0 +1,6 @@
+---
+title: "Untitled"
+author: "Daniel Barreras, Yair Beltrán, Victor Symonds"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
