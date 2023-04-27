@@ -224,6 +224,7 @@ calcular_composicion_genoma <- function(genoma) {
     cat("Contenido de ", nucleotidos[i], composicion[[i]], "\n")
   }
 }
+
 "3. ¿Cuál es el contenido de GC de cada virus?"
   
 calcular_contenido_gc <- function(genoma){
