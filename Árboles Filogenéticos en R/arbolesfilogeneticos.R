@@ -19,10 +19,14 @@ library(ggplot2)
 función read.GenBank del paquete ape y muestra el código empleado para hacerlo."
 
 coronavirus <- c("MT810758", "AY278489", "MW030193", "AY508724", "MT594401",
-                  
-                  "AY485277", "MT292571", "AY390556", "MN908947","JX869059",
+                 "AY485277", "MT292571", "AY390556", "MN908947","JX869059",
+                 "MW133981", "MT577009", "MT835383", "MW056032", "MT470219")
 
-                  "MW133981", "MT577009", "MT835383", "MW056032", "MT470219")
+
+coronavirus <- c("MW133981", "MT577009" ,"MT835383", "MT890462", "MW056032",
+                 "MT470219", "MT594401", "MW030193", "MT810758", "MW041156", 
+                 "MT324062", "MT994849", "MT670013", "MT940481", "MW134558",
+                 "MT876433", "MT845878", "MT919790", "MT955161","MT820489")
 
 
 coronavirus_sequences <- read.GenBank(coronavirus)
@@ -36,7 +40,7 @@ str(coronavirus_sequences)
 "Concentra en un archivo todas las secuencias de los genomas con la función write.dna del paquete ape y
 muestra el código empleado para hacerlo."
 
-write.dna(secuencias_coronavirus, file = "coronavirus_sequences.fasta", format = "fasta")
+write.dna(coronavirus_sequences, file = "coronavirus_sequences.fasta", format = "fasta")
 
 "Carga las secuencias concentradas en el archivo del punto anterior con la función readDNAStringSet de
 Biostrings. Muestra el código empleado para hacerlo, imprime en consola el contenido del objeto tipo
@@ -96,3 +100,16 @@ obtuviste en el paso anterior. Muestra el código que empleaste para hacerlo"
 virus_tree <- nj(dist_matrix)
 class(virus_tree)
 
+virus_tree <- ladderize(virus_tree)
+plot(virus_tree)
+
+
+"Finalmente, construye un árbol filogenético utilizando el objeto de tipo phylo que construiste en el paso anterior
+y la función plot del código base de R. Muestra la imagen de tu árbol filogenético y el código que empleaste para
+obtenerlo."
+
+ggtree(virus_tree, branch.length = "none", layout = "circular") + geom_tiplab()
+
+plot_virus_filogenia <- ggtree(virus_tree) + geom_tiplab() + ggtitle("Phylogenetic analysis of SARS-CoV genomes")
+
+plot_virus_filogenia
