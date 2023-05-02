@@ -86,11 +86,6 @@ dist_matrix
 
 temp <- as.data.frame(as.matrix(dist_matrix))
 
-class(temp)
-
-typeof(temp)
-
-dim(temp)
 
 grayscale_table <- table.paint(temp, cleg  = 0, clabel.row = .5, clabel.col = .5) + scale_color_viridis()
 
