@@ -73,7 +73,7 @@ writeXStringSet(aligned_dna_string_set, "coronavirus_sequences_aligned.fasta", f
 
 alignment <- read.alignment(file = "coronavirus_sequences_aligned.fasta", format = "fasta")
 
-alignment
+head(alignment)
 
 "Crear una matriz de distancia con la función dist.alignment de seqinr y obtén una tabla en escala de grises con la
 función table.paint del paquete ape4 en donde sombras más oscuras de gris significan una mayor distancia.
