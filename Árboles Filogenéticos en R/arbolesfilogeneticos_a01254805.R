@@ -30,6 +30,7 @@ coronavirus <- c("MW133981", "MT577009" ,"MT835383", "MT890462", "MW056032",
 
 
 coronavirus_sequences <- read.GenBank(coronavirus)
+class(coronavirus_sequences)
 
 
 "Imprime en consola la estructura del objeto de clase DNABin que obtuviste con la función read.GenBank.
@@ -47,7 +48,7 @@ Biostrings. Muestra el código empleado para hacerlo, imprime en consola el cont
 DNAStringSet e inclúyelo en tu entregable."
 
 my_dna_string_set <- readDNAStringSet("coronavirus_sequences.fasta", format = "fasta")
-
+class(my_dna_string_set)
 my_dna_string_set
 
 "Orienta los nucleótidos de los genomas con la función OrientNucleotides del paquete DECIPHER y muestra

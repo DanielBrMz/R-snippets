@@ -1,6 +1,6 @@
 install.packages("seqinr")
 library(seqinr)
-setwd("/Users/danie/Downloads/BasicsExercises/Base de datos de virus de NCBI")
+setwd("/Users/brmz/Downloads/BasicsExercises/Base de datos de virus de NCBI")
 
 zika <- read.fasta("Zika.fasta")
 dengue <- read.fasta("Dengue.fasta")
