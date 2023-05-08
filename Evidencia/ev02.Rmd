@@ -56,16 +56,37 @@ coronavirus_sequences <- read.GenBank(variants_coronavirus)
 >Realiza el alineamiento de los genomas virales y visualiza el resultado de tu alineamiento en tu navegador web. Muestra el código empleado para realizar lo anterior e incluye dos imágenes con el resultado del alineamiento, una de los primeros 150 nucleótidos y otra de los nucleótidos 500 al 650.
 
 ```{r}
-alignment <- AlignSeqs(DNAStringSet(coronavirus_sequences))
+# Escribir las secuencias en formato fasta
+write.dna(coronavirus_sequences, file = "coronavirus_sequences.fasta", format = "fasta")
 
+# Leer las secuencias en formato fasta
+coronavirus_string_set <- readDNAStringSet("coronavirus_sequences.fasta", format = "fasta")
+
+# Orientar las secuencias
+oriented_coronavirus_string_set <- OrientNucleotides(coronavirus_string_set)
+
+# Alinear las secuencias 
+aligned_coronavirus_string_set <- AlignSeqs(oriented_coronavirus_string_set)
+
+
+# Se eligen nucleotidos determinados
+first_150_nucleotides <- subseq(coronavirus_string_set, start = 1, end = 150)
+
+names(first_150_nucleotides) <- names_sars_cov_2
+
+nucleotides_500_650 <-  subseq(coronavirus_string_set, start = 500, end = 650)
+
+names(nucleotides_500_650) <- names_sars_cov_2
+
+
+BrowseSeqs(first_150_nucleotides)
+BrowseSeqs(nucleotides_500_650)
   
 ```
 
->
+>Agrega una interpretación escrita, desde el punto de vista biológico, para esta gráfica
 
-```{r}
 
-```
 
 >
 
