@@ -1,4 +1,14 @@
-setwd("/home/yair/Projects/R/R-snippets/Evidencia/")
+## ---- Settings ----
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  fig.width = 7,
+  fig.height = 5,
+  fig.path = "images/"
+)
+
 
 #Cargar librerias
 library(viridis)
@@ -11,13 +21,12 @@ library(ape)
 library(ggtree)
 library(ggplot2)
 #added packages
-library(ggthemes)
-library(reshape2)
+# library(ggthemes)
+# library(reshape2)
 
 
-"Obtén las secuencias de los genomas de las variantes de SARS-CoV-2 y 
-otros virus que tu decidas (8-10 genomas en total) desde el NCBI Links to
- an external site. o el buscador de virus del NCBI Links to an external site."
+"Obtén las secuencias de los genomas de las variantes de SARS-CoV-2 y otros virus que tu decidas (8-10 genomas en total) 
+desde el NCBI Links to an external site. o el buscador de virus del NCBI Links to an external site."
 
 variantes_coronavirus <- c("MN908947", "MT121215", "NC_019843", 
                            "MT121216", "NC_004718", "NC_019843",
@@ -144,13 +153,13 @@ for (i in seq_along(variantes_coronavirus)){
   gc_frecuences <- append(gc_frecuences, GC.content(c(variant_secuences[i])))
 }
 
-# barplot(gc_frecuences,
-#         names.arg = variantes_coronavirus,
-#         xlab = "Variant",
-#         ylab = "Percentage",
-#         main = "%GC",
-#         col = "steelblue"
-# )
+barplot(gc_frecuences,
+        names.arg = variantes_coronavirus,
+        xlab = "Variant",
+        ylab = "Percentage",
+        main = "%GC",
+        col = "steelblue"
+)
 
 "Agrega una interpretación escrita, desde el punto de vista biológico, 
 para esta gráfica (de 6 a 12 renglones)."

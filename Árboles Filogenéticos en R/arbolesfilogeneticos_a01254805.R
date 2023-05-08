@@ -1,4 +1,4 @@
-setwd("/Users/danie/Downloads/BasicsExercises/Árboles Filogenéticos en R")
+# setwd("/Users/danie/Downloads/BasicsExercises/Árboles Filogenéticos en R")
 
 
 "Instala los paquetes y carga las librerías necesarias para hacer un análisis filogenético de genomas virales en R.
@@ -12,7 +12,6 @@ library(seqinr)
 library(adegenet)
 library(ape)
 library(ggtree)
-library(viridis)
 library(ggplot2)
 
 "Obtén las secuencias de 10 genomas virales a partir del código de acceso al genoma en GenBank usando la
@@ -23,7 +22,7 @@ coronavirus <- c("MT810758", "AY278489", "MW030193", "AY508724", "MT594401",
                  "MW133981", "MT577009", "MT835383", "MW056032", "MT470219")
 
 
-coronavirus <- c("MW133981", "MT577009" ,"MT835383", "MT890462", "MW056032",
+coronavirus <- c("MW133981", "MT577009", "MT835383", "MT890462", "MW056032",
                  "MT470219", "MT594401", "MW030193", "MT810758", "MW041156", 
                  "MT324062", "MT994849", "MT670013", "MT940481", "MW134558",
                  "MT876433", "MT845878", "MT919790", "MT955161","MT820489")

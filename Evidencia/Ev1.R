@@ -144,13 +144,13 @@ for (i in seq_along(variantes_coronavirus)){
   gc_frecuences <- append(gc_frecuences, GC.content(c(variant_secuences[i])))
 }
 
-# barplot(gc_frecuences,
-#         names.arg = variantes_coronavirus,
-#         xlab = "Variant",
-#         ylab = "Percentage",
-#         main = "%GC",
-#         col = "steelblue"
-# )
+barplot(gc_frecuences,
+        names.arg = variantes_coronavirus,
+        xlab = "Variant",
+        ylab = "Percentage",
+        main = "%GC",
+        col = "steelblue"
+)
 
 "Agrega una interpretación escrita, desde el punto de vista biológico, 
 para esta gráfica (de 6 a 12 renglones)."
@@ -184,6 +184,6 @@ para realizar este punto."
 nombres_virus <- c("SARS-CoV-2", "RaTG13", "RmYN02", "Pangolin-CoV", "HKU2", "MERS-CoV", "HCoV-NL63", "HCoV-OC43", "HCoV-HKU1", "SARS-CoV")
 
 
-punto_final <- data.frame(Nombres = nombres_virus, ID = variantes_coronavirus, Longitud = variant_sizes, Contenido_GC = round(gc_frecuences * 100, 2))
+punto_final <- data.frame(Nombres = nombres_virus, ID = variantes_coronavirus, Longitud = variant_sizes, Contenido_GC = round(gc_content * 100, 2))
 print("\n")
 print(punto_final)
