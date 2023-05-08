@@ -1,0 +1,94 @@
+---
+title: "Evidencia 2 | Proyecto integrador"
+author: "Daniel Barreras, Yair Beltrán, Víctor Symonds"
+date: "2023-05-07"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+setwd("/Users/USER/OneDrive - Instituto Tecnologico y de Estudios Superiores de Monterrey/Documents/Proyectos/RProjects/R-snippets/Evidencia")
+```
+
+> Uso de paquetes de R
+
+```{r}
+library(viridis)
+library(Biostrings)
+library(DECIPHER)
+library(ade4)
+library(seqinr)
+library(adegenet)
+library(ape)
+library(ggtree)
+library(viridis)
+library(ggplot2)
+
+
+```
+
+> Declaración de variables de las variantes de Coronavirus detectadas en animales
+
+```{r}
+names_sars_cov_2 <- c("SARS-CoV-2", "RaTG13", "RmYN02",
+                      "Pangolin-CoV", "HKU2", "MERS-CoV",
+                      "HCoV-NL63", "HCoV-OC43", "HCoV-HKU1", "SARS-CoV")
+
+
+variants_coronavirus <- c("MN908947", "MT121215", "NC_045512", 
+                           "MT121216", "NC_004718", "NC_019843",
+                           "AY567487", "NC_006213", "NC_006577", "NC_004718")
+
+names(variants_coronavirus) <- names_sars_cov_2
+
+```
+
+>Obtén las secuencias de los genomas de los virus elegidos según la investigación que hayas decidido realizar. 
+Para ello utiliza la función read.GenBank para obtener los genomas directamente del NCBI desde R Studio. 
+Muestra el código empleado para obtenerlos.
+
+```{r}
+coronavirus_sequences <- read.GenBank(variants_coronavirus)
+
+```
+
+>Realiza el alineamiento de los genomas virales y visualiza el resultado de tu alineamiento en tu navegador web. Muestra el código empleado para realizar lo anterior e incluye dos imágenes con el resultado del alineamiento, una de los primeros 150 nucleótidos y otra de los nucleótidos 500 al 650.
+
+```{r}
+alignment <- AlignSeqs(DNAStringSet(coronavirus_sequences))
+
+  
+```
+
+>
+
+```{r}
+
+```
+
+>
+
+```{r}
+
+```
+
+>
+
+```{r}
+
+```
+
+
+>
+
+```{r}
+
+```
+
+
+>
+
+```{r}
+
+```

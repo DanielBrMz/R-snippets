@@ -18,17 +18,17 @@ names_sars_cov_2 <- c("SARS-CoV-2", "RaTG13", "RmYN02",
                       "HCoV-NL63", "HCoV-OC43", "HCoV-HKU1", "SARS-CoV")
 
 
-variantes_coronavirus <- c("MN908947", "MT121215", "NC_045512", 
+variants_coronavirus <- c("MN908947", "MT121215", "NC_045512", 
                            "MT121216", "NC_004718", "NC_019843",
                            "AY567487", "NC_006213", "NC_006577", "NC_004718")
 
-names(variantes_coronavirus) <- names_sars_cov_2
+names(variants_coronavirus) <- names_sars_cov_2
 
 
 "Calcula la longitud de las secuencias de cada variante. Muestra el resultado 
 impreso en consola y el código que utilizaste para realizar este punto.`"
 
-coronavirus_sequences <- read.GenBank(variantes_coronavirus)
+coronavirus_sequences <- read.GenBank(variants_coronavirus)
 sequence_lengths <- sapply(coronavirus_sequences, length)
 names(sequence_lengths) <- variantes_coronavirus
 sequence_lengths
