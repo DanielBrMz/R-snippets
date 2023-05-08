@@ -79,18 +79,24 @@ virus entre especies."
 visual el resultado de la matriz de distancia e inclúyela en tu reporte. Muestra el código empleado para obtener lo anterior e 
 incluye la matriz de distancia y la tabla que obtuviste."
 
-writeXStringSet(aligned_coronavirus_string_set, "coronavirus_sequences_aligned.fasta", format="fasta")
+# Escribe las secuencias alineadas en formato fasta
+writeXStringSet(aligned_coronavirus_string_set, "coronavirus_sequences_aligned.fasta", format = "fasta")
 
+# Lee las secuencias alineadas desde el archivo fasta
 alignment_coronavirus <- read.alignment(file = "coronavirus_sequences_aligned.fasta", format = "fasta")
 
+# Calcula la matriz de distancia a partir del alineamiento
 distance_coronavirus <- dist.alignment(alignment_coronavirus, matrix = "similarity")
 
+# Convierte la matriz de distancia en un data frame
 temp <- as.data.frame(as.matrix(distance_coronavirus))
 
+# Establece los nombres de las filas y columnas del data frame como los nombres de los virus
 rownames(temp) <- names_sars_cov_2
 colnames(temp) <- names_sars_cov_2
 
-grayscale_table <- table.paint(temp, cleg  = 0, clabel.row = .5, clabel.col = .5) + scale_color_viridis()
+# Crea una tabla en escala de grises para visualizar la matriz de distancia
+grayscale_table <- table.paint(temp, cleg = 0, clabel.row = 0.5, clabel.col = 0.5) + scale_color_viridis()
 
 
 "Agrega una interpretación escrita, desde el punto de vista biológico, para esta gráfica (de 6 a 12 renglones)."
@@ -116,22 +122,22 @@ los genomas utilizados, sus nombres comunes o cualquier otra leyenda que te perm
 Muestra el código empleado para realizar lo anterior e incluye la imagen del árbol filogenético."
 
 
+# Genera un árbol filogenético utilizando el método Neighbor Joining (NJ) basado en la matriz de distancia
 phylogenetic_tree_coronavirus <- nj(distance_coronavirus)
-
 phylogenetic_tree_coronavirus <- ladderize(phylogenetic_tree_coronavirus)
 
+# Obtiene los nombres originales de las puntas (hojas) del árbol y asigna nuevos
 original_tip_labels <- rownames(phylogenetic_tree_coronavirus$tip.label)
-
 tip_labels <- setNames(names_sars_cov_2, original_tip_labels)
 
-
-modified_phylogenetic_tree <- phylogenetic_tree_coronavirus
+# Crea una copia modificada del árbol filogenético y la actualiza
+modified_phylogenetic_tree <- phylogenetic_tree_coronaviruss
 modified_phylogenetic_tree$tip.label <- tip_labels
 
-
+# Visualiza el árbol filogenético con las etiquetas de las puntas
 plot.phylo(modified_phylogenetic_tree, show.tip.label = TRUE)
 
-
+# Muestra el arbol filognético
 plot_virus_phylogeny <- ggtree(modified_phylogenetic_tree) + geom_tiplab() + ggtitle("Análisis filogenético de genomas de variantes del SARS-CoV-2 encontrados en animales")
 
 plot_virus_phylogeny
