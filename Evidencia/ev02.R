@@ -64,16 +64,7 @@ BrowseSeqs(nucleotides_500_650)
 "Agrega una interpretación escrita, desde el punto de vista biológico, para esta gráfica (de 6 a 12 renglones)."
 
 
-"Las funciones BrowseSeqs permiten visualizar secuencias de virus relacionados con
-SARS-CoV-2 encontrados en animales. Al observar los primeros 150 nucleótidos, podemos
-identificar regiones conservadas y estructuras importantes. La visualización de nucleótidos
-500-650 destaca regiones codificantes y regulatorias. Estos análisis ayudan a comprender 
-la relación genética y funcional entre los virus y su posible implicación en la transmisión
-animal-humano. La investigación se centra en examinar secuencias de coronavirus en
-animales para explicar la posibilidad de transmisión. Interpretar las secuencias en el
-navegador proporciona información clave para identificar similitudes y diferencias entre los
-genomas, lo que puede ser relevante para comprender la transmisión y la adaptación de
-virus entre especies."
+"Dale correr y ya"
 
 "Genera una matriz de distancia a partir de los genomas alineados. Crea una tabla en escala de grises en la que observes de manera 
 visual el resultado de la matriz de distancia e inclúyela en tu reporte. Muestra el código empleado para obtener lo anterior e 
